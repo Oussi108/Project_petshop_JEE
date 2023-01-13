@@ -1,6 +1,8 @@
 package petShopProject;
 
-public class Product {
+import db.productCnx;
+
+public class Product  {
     private int idproduct;
     private String name;
     private String image;
@@ -9,6 +11,14 @@ public class Product {
     private double price;
 
     // constructor
+    public Product() {
+        this.idproduct = -1;
+        this.name = "";
+        this.image = "";
+        this.information = "";
+        this.categorie = "";
+        this.price = 0;
+    }
     public Product(int idproduct, String name, String image, String information, String categorie, double price) {
         this.idproduct = idproduct;
         this.name = name;
@@ -17,6 +27,9 @@ public class Product {
         this.categorie = categorie;
         this.price = price;
     }
+    
+    
+   
 
     // getters and setters
     public int getIdproduct() {

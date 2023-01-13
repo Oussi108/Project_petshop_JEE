@@ -60,23 +60,29 @@ public class productCnx extends DBConnection {
 		
 		
 	}
-	public ArrayList<Product>  setproducts() {
+	public ArrayList<Product>  GetArrayproducts() {
 		ArrayList<Product> prods= new ArrayList<>();
 		try{
+			this.read("SELECT idproduct, name, image, information, categorie, price FROM product");
+			if(resultat == null) {
+				prods.add(new Product(0," "," "," ","",00));
+				prods.add(new Product(0," "," "," ","",00));
+				return prods;
+			}else {
 			
 			while(next()) {
 		int id = Integer.valueOf(resultat.getString("idproduct"));
-		String Name = resultat.getString("idproduct");
-		String image = resultat.getString("idproduct");
-		String info = resultat.getString("idproduct");
-		String Cate = resultat.getString("idproduct");
-		double price = Double.valueOf(resultat.getString("idproduct"));
+		String Name = resultat.getString("name");
+		String image = resultat.getString("image");
+		String info = resultat.getString("information");
+		String Cate = resultat.getString("categorie");
+		double price = Double.valueOf(resultat.getString("price"));
 		
-			//prods.add(new Product(id,Name,image,info,Cate,price));
+			prods.add(new Product(id,Name,image,info,Cate,price));
 			}
-		
+		this.close();
 		return prods;
-		
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

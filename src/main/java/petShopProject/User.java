@@ -9,6 +9,18 @@ public class User {
     private String Company;
     private String Adrres;
 
+    public User() {
+    	this.idUsername = -1;
+        this.Username = "";
+        this.Password = "";
+        this.Email = "";
+        this.Phone = "";
+        this.Company = "";
+        this.Adrres = "";
+    }
+    	
+    	
+    
     // constructor
     public User(int idUsername, String Username, String Password, String Email, String Phone, String Company, String Adrres) {
         this.idUsername = idUsername;

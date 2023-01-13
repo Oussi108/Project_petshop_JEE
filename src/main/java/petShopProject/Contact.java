@@ -9,6 +9,14 @@ public class Contact {
     private String Message;
 
     // constructor
+    public Contact() {
+        this.idcontact = -1;
+        this.Name = "";
+        this.Email = "";
+        this.Phone = "";
+        this.Company = "";
+        this.Message = "";
+    }
     public Contact(int idcontact, String Name, String Email, String Phone, String Company, String Message) {
         this.idcontact = idcontact;
         this.Name = Name;
