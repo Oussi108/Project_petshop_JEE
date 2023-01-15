@@ -1,6 +1,8 @@
 package petShopProject;
 
-public class User {
+import db.DBConnection;
+
+public class User extends DBConnection{
     private int idUsername;
     private String Username;
     private String Password;
@@ -9,18 +11,6 @@ public class User {
     private String Company;
     private String Adrres;
 
-    public User() {
-    	this.idUsername = -1;
-        this.Username = "";
-        this.Password = "";
-        this.Email = "";
-        this.Phone = "";
-        this.Company = "";
-        this.Adrres = "";
-    }
-    	
-    	
-    
     // constructor
     public User(int idUsername, String Username, String Password, String Email, String Phone, String Company, String Adrres) {
         this.idUsername = idUsername;
@@ -46,7 +36,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        Username = username;
+        Username = username.toUpperCase();
     }
 
     public String getPassword() {
@@ -88,4 +78,24 @@ public class User {
     public void setAdrres(String adrres) {
         Adrres = adrres;
     }
+    //hadi dyal eng
+    public boolean eng() {
+    	if(existeDeja()){
+    		return false;
+    	} else {
+    		Update("INSERT INTO users ( Username, Password,Email,Phone,Company,Adrres)"
+    					+ "VALUES(\""+Username+"\",\""+Password+"\",\""+Email+"\",\""+Phone+"\",\""+Company+"\",\""+Adrres+"\")");
+    					return true;}
+    }
+    //ila deja kayan so y9ad ydir login
+    private boolean existeDeja() {
+    	
+    	read("SELECT *FROM users where Username="+Username);
+    	return next();
+    	
+    	
+    	
+    }
+    
+    
 }
