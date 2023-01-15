@@ -46,8 +46,19 @@
                     
                     <div class="form_row">
                     <input type="submit" class="register" value="login" />
+                         <input type="button" value="register" onclick="window.location='register.jsp'" >
                     </div>   
-                    
+                        <jsp:useBean id="User" class="petShopProject.User">
+                     <jsp:setProperty name="User" property="*"/>
+                    <h3 align="center">
+                    <%	if(!User.eng()){ %>
+                    <font color="green">done</font>
+                    <%} else{ %>
+                    <font color="red">worng info,register ur acc</font>
+                    <%} User.close(); %>
+                    </h3>
+                    </jsp:useBean>
+                     
                   </form>     
                     
                 </div>  
